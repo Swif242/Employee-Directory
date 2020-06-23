@@ -15,17 +15,17 @@ function Table(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map(user => (<tr>
+                    {/* {users.map(user => (<tr>
                         <td>${user.name}</td>
                         <td>{user.email}</td>
                         <td>{user.age}</td>
                         <td>{user.picture}</td>
                     </tr>
-                    ))}
+                    ))} */}
                 </tbody>
             </Table>
         </div>
     )
 }
 
-export default Table
+export default Table;

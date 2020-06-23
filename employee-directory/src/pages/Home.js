@@ -10,10 +10,11 @@ function Home() {
 
     useEffect(() => {
         loadUsers();
-    }, [])
+    })
 
     const loadUsers = () => {
         API.getUsers().then(res => {
+            console.log(res.data)
             setUsers([
                 ...users, 
                 {
@@ -25,13 +26,6 @@ function Home() {
             ]);
         });
     }
-
-    // const createTweet = (tweet) => {
-    //     API.saveTweet(tweet).then(res => {
-    //         setTweetForm({text:""});
-    //         loadTweets();
-    //     })
-    // }
 
     const handleEmployeeChange = (event) => {
         event.preventDefault();
