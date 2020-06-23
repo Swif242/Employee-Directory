@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
-import Table from "../components/Table";
+import TableData from "../components/Table";
 import SearchUser from "../components/SearchUser";
 
 
@@ -10,20 +10,27 @@ function Home() {
 
     useEffect(() => {
         loadUsers();
-    })
+    }, [])
 
     const loadUsers = () => {
         API.getUsers().then(res => {
-            console.log(res.data)
-            setUsers([
-                ...users, 
-                {
-                    name: res.data.name,
-                    email: res.data.email,
-                    age: res.data.dob.age,
-                    picture: res.data.picture.medium,
-                }
-            ]);
+            const employee = res.data.results
+            console.log(employee)
+            for (let i = 0; i < employee.length; i++) {
+
+                setUsers([
+                    ...users,
+                    {
+
+                        name: employee[i].name.first,
+                        email: employee[i].email,
+                        phone: employee[i].phone,
+                        age: employee[i].dob.age,
+                        picture: employee[i].picture.medium,
+                    }
+                ]);
+            }
+
         });
     }
 
@@ -54,9 +61,12 @@ function Home() {
                             submitSearch={submitSearch}
                             searchForm={searchForm} />
                     </div>
-                    <div className="col-md-6">
-                        <Table users={users}/>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <TableData users={users} />
+                        </div>
                     </div>
+
                 </div>
             </div>
         </>
