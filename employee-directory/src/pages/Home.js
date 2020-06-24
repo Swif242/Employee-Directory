@@ -45,7 +45,7 @@ function Home() {
             users.sort( function(a, b){
                 return a.dob.age - b.dob.age
             } )
-            name
+        
             // )
         }
         else if( value === "name"){
