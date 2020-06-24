@@ -6,48 +6,43 @@ function SearchUser(props) {
 
   return (
     <div id="searchForm" className="row">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+      <div className="dropdown">
+        <select className="btn btn-secondary dropdown-toggle"
           onChange={handleEmployeeChange}>
           Filter By:
-        </button>
-        <div
-          class="dropdown-menu"
-          aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Age</a>
-        </div>
+          <option value="age">Age</option>
+        </select>
+
+
       </div>
 
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle"
+      <div className="dropdown">
+        {/* <button className="btn btn-secondary dropdown-toggle"
           type="button" id="dropdownMenuButton"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
-          onChange={handleEmployeeChange}>
+          onSelect={handleEmployeeChange}>
           Sort By:
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Name</a>
-          <a class="dropdown-item" href="#">Age</a>
-        </div>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a className="dropdown-item" href="#">Name</a>
+          <a className="dropdown-item" href="#">Age</a>
+        </div> */}
+        <select className="btn btn-secondary" onChange={handleEmployeeChange}>Sort By:
+          <option value="name">
+            Name
+         </option>
+          <option value="age">
+            Age
+          </option>
+        </select>
+
       </div>
 
-
-      {/* <input
-        onChange={handleEmployeeChange}
-        name="text"
-        placeholder="Search for an Employee"
-      /> */}
       <button
         type="button"
-        class="btn btn-primary"
-        disabled={!searchForm.text}
+        className="btn btn-primary"
         onClick={submitSearch}>
         Submit
         </button>

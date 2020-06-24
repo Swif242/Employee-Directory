@@ -6,7 +6,7 @@ import SearchUser from "../components/SearchUser";
 
 function Home() {
     const [users, setUsers] = useState([])
-    const [searchForm, setSearchForm] = useState({ text: "  " })
+    const [searchOption, setsearchOption] = useState()
 
     useEffect(() => {
         loadUsers();
@@ -16,20 +16,21 @@ function Home() {
         API.getUsers().then(res => {
             const employee = res.data.results
             console.log(employee)
-            for (let i = 0; i < employee.length; i++) {
+            setUsers(res.data.results)
+            // for (let i = 0; i < employee.length; i++) {
 
-                setUsers([
-                    ...users,
-                    {
+                // setUsers([
+                //     ...users,
+                //     {
 
-                        name: employee[i].name.first,
-                        email: employee[i].email,
-                        phone: employee[i].phone,
-                        age: employee[i].dob.age,
-                        picture: employee[i].picture.medium,
-                    }
-                ]);
-            }
+                //         name: employee[i].name.first,
+                //         email: employee[i].email,
+                //         phone: employee[i].phone,
+                //         age: employee[i].dob.age,
+                //         picture: employee[i].picture.medium,
+                //     }
+                // ]);
+            // }
 
         });
     }
@@ -37,11 +38,26 @@ function Home() {
     const handleEmployeeChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
-        setSearchForm({ ...searchForm, [name]: value })
+        // setSearchForm({ ...searchForm, [name]: value })
+        console.log(value)
+        if(value === "age"){
+            // setUsers(
+            users.sort( function(a, b){
+                return a.dob.age - b.dob.age
+            } )
+            // )
+        }
+        else if( value === "name"){
+
+            users.sort( function(a, b){
+                return a.name - b.name
+            } )
+        }
     }
 
     const submitSearch = (event) => {
         event.preventDefault();
+        loadUsers();
         // createTweet(tweetForm);
 
     }
