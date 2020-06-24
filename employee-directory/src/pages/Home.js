@@ -6,7 +6,7 @@ import Jumbotron from '../components/Jumbotron'
 
 function Home() {
     const [users, setUsers] = useState([])
-    const [searchOption, setSearchOption] = useState("name")
+    const [sortOption, setSortOption] = useState("name")
 
     useEffect(() => {
         loadUsers();
@@ -15,23 +15,7 @@ function Home() {
     const loadUsers = () => {
         API.getUsers().then(res => {
             const employee = res.data.results
-            console.log(employee)
-            setUsers(res.data.results)
-            // for (let i = 0; i < employee.length; i++) {
-
-                // setUsers([
-                //     ...users,
-                //     {
-
-                //         name: employee[i].name.first,
-                //         email: employee[i].email,
-                //         phone: employee[i].phone,
-                //         age: employee[i].dob.age,
-                //         picture: employee[i].picture.medium,
-                //     }
-                // ]);
-            // }
-
+            setUsers(employee)
         });
     }
 
@@ -41,46 +25,44 @@ function Home() {
         // setSearchForm({ ...searchForm, [name]: value })
         console.log(value)
 
-        if(value === "age"){
+        if (value === "age") {
 
-            setSearchOption([
-                ...searchOption,
-           
-            
-            users.sort( function(a, b){
-                return a.dob.age - b.dob.age
-            } )
+            setSortOption([
+                ...sortOption,
 
-         ])
+                users.sort(function (a, b) {
+                    return a.dob.age - b.dob.age
+                })
+
+            ])
         }
-        
+
     }
 
     const submitSearch = (event) => {
         event.preventDefault();
-    
 
     }
 
     return (
         <>
-            <div className="container">
-               <Jumbotron />
+            <div id="container" className="container-fluid">
+                <Jumbotron />
                 <div className="row">
-                    <div className="col-12">
+                    <div id="searchRow" className="col-12">
                         <SearchUser
                             handleEmployeeChange={handleEmployeeChange}
                             submitSearch={submitSearch}
-                            searchOption={searchOption} 
-                            />
+                        // searchOption={searchOption} 
+                        />
                     </div>
-                    <div className="row">
-                        <div className="col-12">
-                            <TableData users={users} />
-                        </div>
-                    </div>
-
                 </div>
+                <div id="tableRow" className="row">
+                    <div className="col-12">
+                        <TableData users={users} />
+                    </div>
+                </div>
+
             </div>
         </>
     )

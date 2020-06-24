@@ -5,8 +5,8 @@ function TableData(props) {
   
 
     return (
-        <div id="table">
-            <table className="table table-bordered">
+        <div id="table" className="table-responsive">
+            <table className="table table-bordered ">
                 <thead className="thead-dark">
                     <tr>
                         <th>ID</th>

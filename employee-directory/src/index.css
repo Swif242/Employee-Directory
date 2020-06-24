@@ -1,4 +1,5 @@
 body {
+  
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,6 +13,37 @@ code {
     monospace;
 }
 
-#searchForm{
+#container{
+  width: 100%;
+  background-color: rgb(113, 180, 247);
+  text-align: center;
+  
+}
+
+#table{
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+#tableRow, #searchRow{
+  /* margin-left: 50px;
+  padding-right: auto; */
+ }
+
+.jumbotron{
+  background-image: url("https://image.freepik.com/free-photo/abstract-view-urban-scene-skyscrapers_53876-14116.jpg");
+  background-position: 25% 25%;
+}
+/* JumboTron container css */
+#jumbotron{
+  text-align: center;
+}
+
+/* SearchForm css */
+#sortbtn, #filterbtn, #searchForm{
   padding: 5px;
+}
+#searchForm{
+  margin-left: auto;
+  margin-right: auto;
 }
