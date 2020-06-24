@@ -75,7 +75,7 @@ function Home() {
                         <SearchUser
                             handleEmployeeChange={handleEmployeeChange}
                             submitSearch={submitSearch}
-                            searchForm={searchForm} />
+                            searchOption={searchOption} />
                     </div>
                     <div className="row">
                         <div className="col-md-6">
