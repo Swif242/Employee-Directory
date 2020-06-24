@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import TableData from "../components/Table";
 import SearchUser from "../components/SearchUser";
-
+import Jumbotron from '../components/Jumbotron'
 
 function Home() {
     const [users, setUsers] = useState([])
@@ -53,12 +53,6 @@ function Home() {
 
          ])
         }
-        else if( value === "name"){
-
-            users.sort( function(a, b){
-                return a.name - b.name
-            } )
-        }
         
     }
 
@@ -71,13 +65,9 @@ function Home() {
     return (
         <>
             <div className="container">
+               <Jumbotron />
                 <div className="row">
-                    <div className="jumbotron">
-                        <h1 className="display-4">Hello, Jeremy!</h1>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-6">
+                    <div className="col">
                         <SearchUser
                             handleEmployeeChange={handleEmployeeChange}
                             submitSearch={submitSearch}
@@ -85,7 +75,7 @@ function Home() {
                             />
                     </div>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col">
                             <TableData users={users} />
                         </div>
                     </div>

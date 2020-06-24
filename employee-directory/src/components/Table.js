@@ -1,13 +1,13 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table';
 
 function TableData(props) {
     const { users } = props;
-    console.log(users)
+  
+
     return (
         <div id="table">
-            <Table striped bordered hover>
-                <thead>
+            <table className="table table-bordered">
+                <thead className="thead-dark">
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -28,7 +28,7 @@ function TableData(props) {
                     </tr>
                     ))}
                 </tbody>
-            </Table>
+            </table>
         </div>
     )
 }

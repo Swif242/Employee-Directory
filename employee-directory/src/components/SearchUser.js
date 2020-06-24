@@ -1,7 +1,7 @@
 import React from 'react'
 
-function SearchUser(props) {
 
+function SearchUser(props) {
   const { handleEmployeeChange, setSearchOption } = props;
 
   return (
@@ -32,13 +32,13 @@ function SearchUser(props) {
 
       </div>
 
-      <button
+       {/* <button
         type="button"
         className="btn btn-primary"
         onClick={setSearchOption}>
         Submit
-        </button>
-    </div>
+        </button> */}
+    </div> 
   )
 }
 
