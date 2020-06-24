@@ -67,7 +67,7 @@ function Home() {
             <div className="container">
                <Jumbotron />
                 <div className="row">
-                    <div className="col">
+                    <div className="col-12">
                         <SearchUser
                             handleEmployeeChange={handleEmployeeChange}
                             submitSearch={submitSearch}
@@ -75,7 +75,7 @@ function Home() {
                             />
                     </div>
                     <div className="row">
-                        <div className="col">
+                        <div className="col-12">
                             <TableData users={users} />
                         </div>
                     </div>
