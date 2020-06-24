@@ -2,7 +2,7 @@ import React from 'react'
 
 function SearchUser(props) {
 
-  const { handleEmployeeChange, submitSearch } = props;
+  const { handleEmployeeChange, setSearchOption } = props;
 
   return (
     <div id="searchForm" className="row">
@@ -10,6 +10,7 @@ function SearchUser(props) {
         <div>Filter By:</div>
         <select className="btn btn-secondary dropdown-toggle"
           onChange={handleEmployeeChange}>
+
           <option value="age">Age</option>
         </select>
 
@@ -18,19 +19,9 @@ function SearchUser(props) {
 
       <div className="dropdown">
         <div>Sort By: </div>
-        {/* <button className="btn btn-secondary dropdown-toggle"
-          type="button" id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          onSelect={handleEmployeeChange}>
-          Sort By:
-        </button>
-        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a className="dropdown-item" href="#">Name</a>
-          <a className="dropdown-item" href="#">Age</a>
-        </div> */}
-        <select className="btn btn-secondary" onChange={handleEmployeeChange}>Sort By:
+        <select className="btn btn-secondary"
+          onChange={handleEmployeeChange}>
+
           <option value="name">
             Name
          </option>
@@ -44,7 +35,7 @@ function SearchUser(props) {
       <button
         type="button"
         className="btn btn-primary"
-        onClick={submitSearch}>
+        onClick={setSearchOption}>
         Submit
         </button>
     </div>

@@ -6,7 +6,7 @@ import SearchUser from "../components/SearchUser";
 
 function Home() {
     const [users, setUsers] = useState([])
-    const [searchOption, setsearchOption] = useState()
+    const [searchOption, setSearchOption] = useState("name")
 
     useEffect(() => {
         loadUsers();
@@ -40,13 +40,18 @@ function Home() {
         const { name, value } = event.target;
         // setSearchForm({ ...searchForm, [name]: value })
         console.log(value)
+
         if(value === "age"){
-            // setUsers(
+
+            setSearchOption([
+                ...searchOption,
+           
+            
             users.sort( function(a, b){
                 return a.dob.age - b.dob.age
             } )
-        
-            // )
+
+         ])
         }
         else if( value === "name"){
 
@@ -54,12 +59,12 @@ function Home() {
                 return a.name - b.name
             } )
         }
+        
     }
 
     const submitSearch = (event) => {
         event.preventDefault();
-        loadUsers();
-        // createTweet(tweetForm);
+    
 
     }
 
@@ -76,7 +81,7 @@ function Home() {
                         <SearchUser
                             handleEmployeeChange={handleEmployeeChange}
                             submitSearch={submitSearch}
-                            // searchOption={searchOption} 
+                            searchOption={searchOption} 
                             />
                     </div>
                     <div className="row">
