@@ -45,6 +45,7 @@ function Home() {
             users.sort( function(a, b){
                 return a.dob.age - b.dob.age
             } )
+            name
             // )
         }
         else if( value === "name"){
@@ -75,7 +76,8 @@ function Home() {
                         <SearchUser
                             handleEmployeeChange={handleEmployeeChange}
                             submitSearch={submitSearch}
-                            searchOption={searchOption} />
+                            // searchOption={searchOption} 
+                            />
                     </div>
                     <div className="row">
                         <div className="col-md-6">
