@@ -6,7 +6,7 @@ function TableData(props) {
 
     return (
         <div id="table" className="table-responsive">
-            <table className="table table-bordered ">
+            <table id="myTable" className="table table-bordered ">
                 <thead className="thead-dark">
                     <tr>
                         <th>ID</th>

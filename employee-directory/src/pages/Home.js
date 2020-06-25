@@ -7,6 +7,8 @@ import Jumbotron from '../components/Jumbotron'
 function Home() {
     const [users, setUsers] = useState([])
     const [sortOption, setSortOption] = useState("name")
+    const [filterOption, setFilterOption] = useState("")
+
 
     useEffect(() => {
         loadUsers();
@@ -17,12 +19,12 @@ function Home() {
             const employee = res.data.results
             setUsers(employee)
         });
+
     }
 
-    const handleEmployeeChange = (event) => {
+    const handleSortChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
-        // setSearchForm({ ...searchForm, [name]: value })
         console.log(value)
 
         if (value === "age") {
@@ -39,10 +41,33 @@ function Home() {
 
     }
 
-    const submitSearch = (event) => {
+    const handleFilterChange = (event) => {
         event.preventDefault();
+        const { name, value } = event.target;
+        setFilterOption(
+            {
+                ...filterOption,
+                [name]: value
+            }
+        )
+        console.log(value)
+        // Loop through all table rows, and hide those who don't match the search query
+        for (let i = 0; i < users.length; i++) {
 
+
+            if (value === users.name) {
+                console.log("it worked")
+            }
+            else{
+                console.log("not found")
+            }
+        }
     }
+
+
+
+
+
 
     return (
         <>
@@ -51,15 +76,17 @@ function Home() {
                 <div className="row">
                     <div id="searchRow" className="col-12">
                         <SearchUser
-                            handleEmployeeChange={handleEmployeeChange}
-                            submitSearch={submitSearch}
+                            handleSortChange={handleSortChange}
+                            handleFilterChange={handleFilterChange}
                         // searchOption={searchOption} 
                         />
                     </div>
                 </div>
                 <div id="tableRow" className="row">
                     <div className="col-12">
-                        <TableData users={users} />
+                        <TableData
+                            users={users}
+                        />
                     </div>
                 </div>
 
