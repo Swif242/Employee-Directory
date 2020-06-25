@@ -6,9 +6,9 @@ import Jumbotron from '../components/Jumbotron'
 
 function Home() {
     const [users, setUsers] = useState([])
-    const [sortOption, setSortOption] = useState("name")
-    const [filterOption, setFilterOption] = useState("")
-
+    const [sortOption, setSortOption] = useState("name");
+    const [filterOption, setFilterOption] = useState("");
+    const [filteredState, setFilteredState] = useState([]);
 
     useEffect(() => {
         loadUsers();
@@ -55,10 +55,19 @@ function Home() {
         for (let i = 0; i < users.length; i++) {
 
 
-            if (value === users.name) {
+            if (value === users[i].name.first) {
+
+
+                setFilteredState([
+
+                    ...filteredState,
+                    users[i]
+                ])
                 console.log("it worked")
             }
-            else{
+            else if(value === ""){
+
+                setFilteredState([])
                 console.log("not found")
             }
         }
@@ -85,7 +94,7 @@ function Home() {
                 <div id="tableRow" className="row">
                     <div className="col-12">
                         <TableData
-                            users={users}
+                            users={filteredState.length > 0 ? filteredState : users}
                         />
                     </div>
                 </div>
